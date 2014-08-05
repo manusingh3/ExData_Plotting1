@@ -1,0 +1,19 @@
+tab <- read.table("pow.txt", sep";", header=TRUE)
+tab[,1] <- as.Date(tab[,1], "%d/%m/%Y")
+a <-subset(tab, tab$Date>='2007-02-01')
+b <-subset(a, tab$Date<='2007-02-02')
+
+b[,3] <-as.numeric(b[,3])
+b[,3] <-as.numeric(b[,3])
+b[,4] <-as.numeric(b[,4])
+b[,5] <-as.numeric(b[,5])
+b[,6] <-as.numeric(b[,6])
+b[,7] <-as.numeric(b[,7])
+b[,8] <-as.numeric(b[,8])
+b[,9] <-as.numeric(b[,9])
+
+with(b, plot(Global_active_power, type="l",xaxt="n")
+axis(1, at=c(1,nrow(b)/2,nrow(b)),labels=c("Thu","Fri","Sat")
+
+dev.copy(png, file = "plot2.png") 
+dev.off()

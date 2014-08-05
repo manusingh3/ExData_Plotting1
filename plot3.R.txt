@@ -1,0 +1,39 @@
+tab <- read.table("pow.txt", sep=",", header=TRUE)
+tab[,1] <- as.Date(tab[,1], "%d/%m/%Y")
+a <-subset(tab, tab$Date>='2007-02-01')
+b <-subset(a, a$Date<="2007-02-02")
+
+b[,3] <-as.character(b[,3])
+b[,4] <-as.character(b[,4])
+b[,5] <-as.character(b[,5])
+b[,6] <-as.character(b[,6])
+b[,7] <-as.character(b[,7])
+b[,8] <-as.character(b[,8])
+b[,9] <-as.character(b[,9])
+
+
+b[,3] <-as.numeric(b[,3])
+b[,4] <-as.numeric(b[,4])
+b[,5] <-as.numeric(b[,5])
+b[,6] <-as.numeric(b[,6])
+b[,7] <-as.numeric(b[,7])
+b[,8] <-as.numeric(b[,8])
+b[,9] <-as.numeric(b[,9])
+
+
+sub1 <- b[,7]
+sub2 <- b[,8]
+sub3 <- b[,9]
+
+plot(sub1,xaxt='n',xlab='',ylab='Energy sub metering',type='l')
+> points(sub2,xaxt='n',xlab='',ylab='Energy sub metering',type='l',col="red")
+> points(sub3,xaxt='n',xlab='',ylab='Energy sub metering',type='l',col="blue")
+
+
+axis(1, at=c(1,nrow(b)/2,nrow(b)),labels=c("Thu","Fri","Sat")
+legend("topright",lty=1, col=c("black","red","blue"),legend=c("Sub_metering_1","Sun_metering_2","Sub_metering_3"))
+
+
+
+dev.copy(png, file = "plot2.png") 
+dev.off()
